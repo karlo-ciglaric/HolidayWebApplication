@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Holiday;
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -135,40 +136,41 @@
         <label>Holiday number</label>
     </div>
     <div class="item item-src1">
-        <input type="search" placeholder="12345" />
+        <text></text>
+        <input type="text" placeholder="12345" asp-for="Id"/>
     </div>
     <div class="item item-destination">
         <label>Destination</label>
     </div>
     <div class="item item-src2">
-        <input type="search" />
+        <input type="text" asp-for="Destination"/>
     </div>
     <div class="item item-cost">
         <label>Cost</label>
     </div>
     <div class="item item-src3">
-        <input type="search" />
+        <input type="text" asp-for="Cost"/>
     </div>
     <div class="item item-departure-date">
         <label>Departure date</label>
     </div>
     <div class="item item-src4">
-        <input type="search" />
+        <input type="text" asp-for="DepartureDate"/>
     </div>
     <div class="item item-no-of-days">
         <label>No of days</label>
     </div>
     <div class="item item-src5">
-        <input type="search" />
+        <input type="text" asp-for="NoOfDays"/>
     </div>
     <div class="item item-available">
         <label>Available</label>
     </div>
     <div class="item item-ckb">
-        <input type="checkbox" />
+        <input type="checkbox" asp-for="Available" />
     </div>
     <div class="item item-add">
-        <button>Add a holiday</button>
+        <button asp-controller="Home" asp-action="AddHoliday" formmethod="post">Add a holiday</button>
     </div>
     <div class="item item-update">
         <button>Update a holiday</button>

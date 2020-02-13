@@ -11,16 +11,32 @@ namespace HolidayWebApplication.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IHolidayRepository holidayRepository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IHolidayRepository _holidayRepository)
         {
-            _logger = logger;
+            holidayRepository = _holidayRepository;
         }
 
-        public IActionResult Index()
+        public IActionResult Add(Holiday holiday)
         {
+            holidayRepository.AddHoliday(holiday);
+
             return View();
+        }
+
+        public IActionResult Index(Holiday _holiday)
+        {
+            Holiday holiday;
+
+            if (_holiday == null)
+            {
+                
+            }
+
+            holiday = _holiday;
+
+            return View(holiday);
         }
 
         public IActionResult Privacy()
