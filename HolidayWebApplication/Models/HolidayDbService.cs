@@ -34,12 +34,14 @@ namespace HolidayWebApplication.Models
 
         public Holiday GetHolidayById(int holidayId)
         {
-            throw new NotImplementedException();
+            return context.Holidays.Find(holidayId);
         }
 
         public void UpdateHoliday(Holiday holiday)
         {
-            throw new NotImplementedException();
+            context.Holidays.Update(holiday);
+
+            context.SaveChanges();
         }
     }
 }

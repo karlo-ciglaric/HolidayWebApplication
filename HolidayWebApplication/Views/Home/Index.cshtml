@@ -4,189 +4,34 @@
 }
 
 
+    <form role="form" method="post">
 
-<style>
-    .item-title {
-        grid-column: 2 / span 3;
-        grid-row: 1 / span 2;
-    }
-
-
-
-    .item-holiday-number {
-        grid-column: 1 / span 1;
-        grid-row: 3 / span 1;
-    }
-
-    .item-destination {
-        grid-column: 1 / span 1;
-        grid-row: 4 / span 1;
-    }
-
-    .item-cost {
-        grid-column: 1 / span 1;
-        grid-row: 5 / span 1;
-    }
-
-    .item-departure-date {
-        grid-column: 1 / span 1;
-        grid-row: 6 / span 1;
-    }
-
-    .item-no-of-days {
-        grid-column: 1 / span 1;
-        grid-row: 7 / span 1;
-    }
-
-    .item-available {
-        grid-column: 1 / span 1;
-        grid-row: 8 / span 1;
-    }
-
-    .item-src1 {
-        grid-area: inpHolidayNumber;
-        grid-column: 3 / span 1;
-        grid-row: 3 / span 1
-    }
-
-    .item-src2 {
-        grid-area: inpDestination;
-        grid-column: 3 / span 1;
-        grid-row: 4 / span 1;
-    }
-
-    .item-src3 {
-        grid-column: 3 / span 1;
-        grid-row: 5 / span 1;
-    }
-
-    .item-src4 {
-        grid-column: 3 / span 1;
-        grid-row: 6 / span 1;
-    }
-
-    .item-src5 {
-        grid-column: 3 / span 1;
-        grid-row: 7 / span 1;
-    }
-
-    .item-ckb {
-        grid-column: 3 / span 1;
-        grid-row: 8 / span 1;
-    }
-
-    .item-add {
-        grid-column: 5 / span 1;
-        grid-row: 3 / span 1;
-    }
-
-    .item-update {
-        grid-column: 5 / span 1;
-        grid-row: 4 / span 1;
-    }
-
-    .item-delete {
-        grid-column: 5 / span 1;
-        grid-row: 5 / span 1;
-    }
-
-    .item-print {
-        grid-column: 5 / span 1;
-        grid-row: 6 / span 1;
-    }
-
-    .item-cancel {
-        grid-area: btnCancel;
-        grid-column: 5 / span 1;
-        grid-row: 7 / span 1;
-    }
-
-
-    .item {
-        display: block;
-        border: 1px solid black;
-    }
-
-    .container-for-grid {
-        background-color: aqua;
-        margin: auto;
-        width: 55%;
-        height: auto;
-        display: grid;
-        justify-items: center;
-        grid-template-columns: 25% 12.5% 25% 12.5% 25%;
-        grid-template-rows: auto;
-        /*grid-template-areas:
-        ". . title . ."
-        ". . . . . . "
-        ". lblHolidayNumber . inpHolidayNumber . btnAdd"
-        ". lblDestination . inpDestination . btnUpdate"
-        ". lblCost . inpCost . btnDelete"
-        ". lblDepartureDate . inpDepartureDate . btnPrint"
-        ". lblNoOfDays . inpNoOfDays . btnCancel"
-        ". lblAvailable . inpAvailable . ."*/
-    }
-</style>
-
-<<div class="container-for-grid">
-    <div class="item item-title">
-        <h1>Holiday form</h1>
-    </div>
-    <div class="item item-holiday-number">
         <label>Holiday number</label>
-    </div>
-    <div class="item item-src1">
-        <text></text>
-        <input type="text" placeholder="12345" asp-for="Id"/>
-    </div>
-    <div class="item item-destination">
-        <label>Destination</label>
-    </div>
-    <div class="item item-src2">
-        <input type="text" asp-for="Destination"/>
-    </div>
-    <div class="item item-cost">
-        <label>Cost</label>
-    </div>
-    <div class="item item-src3">
-        <input type="text" asp-for="Cost"/>
-    </div>
-    <div class="item item-departure-date">
-        <label>Departure date</label>
-    </div>
-    <div class="item item-src4">
-        <input type="text" asp-for="DepartureDate"/>
-    </div>
-    <div class="item item-no-of-days">
-        <label>No of days</label>
-    </div>
-    <div class="item item-src5">
-        <input type="text" asp-for="NoOfDays"/>
-    </div>
-    <div class="item item-available">
-        <label>Available</label>
-    </div>
-    <div class="item item-ckb">
+        <input type="text" asp-for="Id"/>
+        <input asp-controller="Home" asp-action="Add" type="submit" class="btn btn-primary" value="Add Holiday" />
+
+        <label asp-for="Destination"></label>
+        <input type="text" asp-for="Destination" />
+        <input asp-controller="Home" asp-action="Update" type="submit" class="btn btn-primary" value="Update Holiday" />
+
+        <label asp-for="Cost"></label>
+        <input type="text" asp-for="Cost" />
+        <input asp-controller="Home" asp-action="Print" type="submit" class="btn btn-primary" value="Print all Holidays" />
+
+        <label asp-for="DepartureDate"></label>
+        <input type="text" asp-for="DepartureDate" />
+
+        <label asp-for="NoOfDays"></label>
+        <input type="text" asp-for="NoOfDays" />
+
+        <label asp-for="Available"></label>
         <input type="checkbox" asp-for="Available" />
-    </div>
-    <div class="item item-add">
-        <button asp-controller="Home" asp-action="AddHoliday" formmethod="post">Add a holiday</button>
-    </div>
-    <div class="item item-update">
-        <button>Update a holiday</button>
-    </div>
-    <div class="item item-delete">
-        <button>Delete a holiday</button>
-    </div>
-    <div class="item item-print">
-        <button>Print all holidays</button>
-    </div>
-    <div class="item item-cancel">
-        <button>Cancel</button>
-    </div>
-</div>
 
-<!--
+        <input asp-controller="Home" asp-action="First" type="submit" class="btn btn-primary" value="<<" />
+        <input asp-controller="Home" asp-action="Previous" type="submit" class="btn btn-primary" value="<" />
+        <input asp-controller="Home" asp-action="Next" type="submit" class="btn btn-primary" value=">" />
+        <input asp-controller="Home" asp-action="Last" type="submit" class="btn btn-primary" value=">>" />
 
 
-    -->
+
+    </form>

@@ -22,21 +22,50 @@ namespace HolidayWebApplication.Controllers
         {
             holidayRepository.AddHoliday(holiday);
 
-            return View();
+
+
+            return View("Index", holiday);
         }
 
-        public IActionResult Index(Holiday _holiday)
+        public IActionResult Update(Holiday holiday)
         {
-            Holiday holiday;
+            holidayRepository.UpdateHoliday(holiday);
 
-            if (_holiday == null)
+            return View("Index", holiday);
+
+        }
+        public IActionResult Next(Holiday holiday)
+        {
+            var nextHoliday = holidayRepository.GetHolidayById(holiday.Id + 1);
+
+
+            return RedirectToAction("Index", nextHoliday);
+
+        }
+
+        public IActionResult Previous(Holiday holiday)
+        {
+            var prevHoliday = holidayRepository.GetHolidayById(holiday.Id - 1);
+
+            return RedirectToAction("Index", prevHoliday);
+
+        }
+
+        public IActionResult Index(Holiday holiday)
+        {
+            Holiday _holiday;
+
+
+            if (holiday.Id != 0)
             {
-                
+                _holiday = holidayRepository.GetHolidayById(holiday.Id);
+                return View(_holiday);
             }
-
-            holiday = _holiday;
-
-            return View(holiday);
+            else
+            {
+                _holiday = holidayRepository.GetHolidayById(1);
+                return View(_holiday);
+            }
         }
 
         public IActionResult Privacy()
