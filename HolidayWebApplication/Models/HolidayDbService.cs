@@ -12,6 +12,7 @@ namespace HolidayWebApplication.Models
         {
             context = _context;
         }
+
         public void AddHoliday(Holiday holiday)
         {
             if (holiday == null)
@@ -24,7 +25,9 @@ namespace HolidayWebApplication.Models
 
         public void DeleteHoliday(Holiday holiday)
         {
-            throw new NotImplementedException();
+            context.Holidays.Remove(holiday);
+
+            context.SaveChanges();
         }
 
         public IEnumerable<Holiday> GetAllHolidays()
@@ -35,6 +38,11 @@ namespace HolidayWebApplication.Models
         public Holiday GetHolidayById(int holidayId)
         {
             return context.Holidays.Find(holidayId);
+        }
+
+        public Holiday GetNextHoliday(Holiday holiday)
+        {
+            return null;
         }
 
         public void UpdateHoliday(Holiday holiday)

@@ -7,7 +7,7 @@
     <form role="form" method="post">
 
         <label>Holiday number</label>
-        <input type="text" asp-for="Id"/>
+        <input type="text" asp-for="Id" />
         <input asp-controller="Home" asp-action="Add" type="submit" class="btn btn-primary" value="Add Holiday" />
 
         <label asp-for="Destination"></label>
@@ -16,10 +16,11 @@
 
         <label asp-for="Cost"></label>
         <input type="text" asp-for="Cost" />
-        <input asp-controller="Home" asp-action="Print" type="submit" class="btn btn-primary" value="Print all Holidays" />
+        <input asp-controller="Home" asp-action="Delete" type="submit" class="btn btn-primary" value="Delete Holiday" />
 
         <label asp-for="DepartureDate"></label>
         <input type="text" asp-for="DepartureDate" />
+        <input asp-controller="Home" asp-action="Print" type="submit" class="btn btn-primary" value="Print all Holidays" />
 
         <label asp-for="NoOfDays"></label>
         <input type="text" asp-for="NoOfDays" />

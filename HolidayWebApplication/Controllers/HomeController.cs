@@ -34,6 +34,14 @@ namespace HolidayWebApplication.Controllers
             return View("Index", holiday);
 
         }
+
+        public IActionResult Delete(Holiday holiday)
+        {
+            holidayRepository.DeleteHoliday(holiday);
+
+            return View("Index");
+
+        }
         public IActionResult Next(Holiday holiday)
         {
             var nextHoliday = holidayRepository.GetHolidayById(holiday.Id + 1);

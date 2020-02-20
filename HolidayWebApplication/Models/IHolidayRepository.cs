@@ -12,5 +12,6 @@ namespace HolidayWebApplication.Models
         void AddHoliday(Holiday holiday);
         void UpdateHoliday(Holiday holiday);
         void DeleteHoliday(Holiday holiday);
+        Holiday GetNextHoliday(Holiday holiday);
     }
 }
