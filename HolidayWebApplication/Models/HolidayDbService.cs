@@ -48,6 +48,7 @@ namespace HolidayWebApplication.Models
 
         public IEnumerable<Holiday> GetAllHolidays()
         {
+            int i;
             return context.Holidays;
         }
 
