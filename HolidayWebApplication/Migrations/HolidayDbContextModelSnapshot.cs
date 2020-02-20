@@ -22,9 +22,8 @@ namespace HolidayWebApplication.Migrations
             modelBuilder.Entity("HolidayWebApplication.Models.Holiday", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+                        
 
                     b.Property<bool>("Available")
                         .HasColumnType("bit");

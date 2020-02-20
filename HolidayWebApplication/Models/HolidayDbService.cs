@@ -20,6 +20,17 @@ namespace HolidayWebApplication.Models
 
             context.Holidays.Add(holiday);
 
+            context.Holidays.OrderBy(h => h.Id);
+
+
+
+            context.SaveChanges();
+        }
+
+        public void UpdateHoliday(Holiday holiday)
+        {
+            context.Holidays.Update(holiday);
+
             context.SaveChanges();
         }
 
@@ -30,6 +41,11 @@ namespace HolidayWebApplication.Models
             context.SaveChanges();
         }
 
+        public void PrintHolidays()
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Holiday> GetAllHolidays()
         {
             return context.Holidays;
@@ -37,19 +53,31 @@ namespace HolidayWebApplication.Models
 
         public Holiday GetHolidayById(int holidayId)
         {
-            return context.Holidays.Find(holidayId);
+            return context.Holidays.Where(h => h.Id == holidayId).First();
         }
 
         public Holiday GetNextHoliday(Holiday holiday)
         {
-            return null;
+
+            return context.Holidays.Where(h => h.Id >= holiday.Id + 1).OrderBy(h => h.Id).FirstOrDefault();
         }
 
-        public void UpdateHoliday(Holiday holiday)
+        public Holiday GetPrevHoliday(Holiday holiday)
         {
-            context.Holidays.Update(holiday);
+            Holiday _holiday = null;
+            List<Holiday> holidayList = context.Holidays.ToList();
 
-            context.SaveChanges();
+            if (holiday.Id != 1)
+            {
+               
+
+                _holiday = context.Holidays.Where(h => h.Id < holiday.Id).OrderByDescending(h => h.Id).FirstOrDefault();
+                return _holiday;
+            }
+
+            return context.Holidays.OrderBy(h => h.Id).Last();
         }
+
+        
     }
 }

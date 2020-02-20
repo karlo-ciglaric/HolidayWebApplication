@@ -11,17 +11,12 @@ namespace HolidayWebApplication.Migrations
                 name: "Holidays",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(nullable: false),
                     Destination = table.Column<string>(nullable: true),
                     Cost = table.Column<decimal>(type: "decimal(6,2)", nullable: false),
                     DepartureDate = table.Column<DateTime>(nullable: false),
                     NoOfDays = table.Column<int>(nullable: false),
                     Available = table.Column<bool>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Holidays", x => x.Id);
                 });
         }
 

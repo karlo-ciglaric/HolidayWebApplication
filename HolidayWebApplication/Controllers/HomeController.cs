@@ -37,14 +37,18 @@ namespace HolidayWebApplication.Controllers
 
         public IActionResult Delete(Holiday holiday)
         {
+            var prevHoliday = holidayRepository.GetPrevHoliday(holiday);
+
             holidayRepository.DeleteHoliday(holiday);
 
-            return View("Index");
+            return RedirectToAction("Index", prevHoliday);
+
+            //return View("Index");
 
         }
         public IActionResult Next(Holiday holiday)
         {
-            var nextHoliday = holidayRepository.GetHolidayById(holiday.Id + 1);
+            var nextHoliday = holidayRepository.GetNextHoliday(holiday);
 
 
             return RedirectToAction("Index", nextHoliday);
@@ -53,7 +57,7 @@ namespace HolidayWebApplication.Controllers
 
         public IActionResult Previous(Holiday holiday)
         {
-            var prevHoliday = holidayRepository.GetHolidayById(holiday.Id - 1);
+            var prevHoliday = holidayRepository.GetPrevHoliday(holiday);
 
             return RedirectToAction("Index", prevHoliday);
 
